@@ -1,0 +1,9 @@
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+BODY {
+  font-family: sans-serif;
+}
