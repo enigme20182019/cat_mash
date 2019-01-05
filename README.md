@@ -20,3 +20,16 @@ then
 
 > npm run server
 > npm start
+
+
+## Host routes
+
+__GET /cats__
+
+ get 10 less voted cats shuffled
+
+ 
+__POST /vote/:winnerID/:looserId__
+
+ update elo rating for cat with corresponding id
+ return 503 status if at least one cat was not found
