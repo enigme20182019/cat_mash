@@ -33,3 +33,18 @@ __POST /vote/:winnerID/:loserId__
 
  update elo rating for cat with corresponding id
  return 503 status if at least one cat was not found
+ 
+ 
+ ## Roadmap
+ 
+ - iteration 1 
+  base function with elo rank | vote mechanism
+ - iteration 1.5
+  fix sort issue 
+ - iteration 2
+  remake the vote logic
+  config files
+  css -> scss
+ - iteration 3
+  complete affordance (vote, image load, rank page load)
+  add host & client hot start 
