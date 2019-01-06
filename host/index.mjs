@@ -23,22 +23,24 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
   })
 
 
-  app.post('/vote/:winnerId/:looserId', (req, res) => {
+  app.post('/vote/:winnerId/:loserId', (req, res) => {
     let winnerId = parseInt(req.params.winnerId)
-    let looserId = parseInt(req.params.looserId)
+    let loserId = parseInt(req.params.loserId)
 
 
     let winner = cats.find((cat) => cat.id === winnerId)
-    let looser = cats.find((cat) => cat.id === looserId)
+    let loser = cats.find((cat) => cat.id === loserId)
 
-    if(winner && looser) {
-      winner.elo += Elo.getDelta(winner.elo, looser.elo, WIN_STATUS)
-      looser.elo -= Elo.getDelta(looser.elo, winner.elo, LOOSE_STATUS)
+    if(winner && loser) {
+      winner.elo += Elo.getDelta(winner.elo, loser.elo, WIN_STATUS)
+      loser.elo += Elo.getDelta(loser.elo, winner.elo, LOOSE_STATUS)
+      loser.downvote += 1
+      winner.upvote += 1
 
-      res.json([winner, looser])
+      res.json([winner, loser])
     } else {
       res.status(503)
-      res.json({message : 'Winner or looser missing'})
+      res.json({message : 'Winner or loser missing'})
     }
   })
 

@@ -29,7 +29,7 @@ __GET /cats__
  get 10 less voted cats shuffled
 
  
-__POST /vote/:winnerID/:looserId__
+__POST /vote/:winnerID/:loserId__
 
  update elo rating for cat with corresponding id
  return 503 status if at least one cat was not found
