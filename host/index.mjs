@@ -23,6 +23,11 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
   })
 
 
+  app.get('/rank', (req, res) => {
+    res.json(cats.sort((catA, catB) => catA.elo < catB.elo))
+  })
+
+
   app.post('/vote/:winnerId/:loserId', (req, res) => {
     let winnerId = parseInt(req.params.winnerId)
     let loserId = parseInt(req.params.loserId)
