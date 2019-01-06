@@ -13,19 +13,23 @@ class Rank extends Component {
   render() {
     return (
       <div>
-        <h1>Rank</h1>
-        <button onClick={() => this.props.dispatch({type : DISPLAY_VOTE})}>Go to vote</button>
-        {
-          this.props.rank && this.props.rank.length > 2 && this.props.rank.slice(0, 3).map((cat, index) => {
-            return <RankCat cat={cat} rank={index + 1}/>
-          })
-        }
-        {
-          this.props.rank && this.props.rank.length > 3 && this.props.rank.slice(3).map((cat, index) => {
-            return <RankCat cat={cat} rank={index + 1}/>
-          })
-        }
-
+        <button className="toggle_page" onClick={() => this.props.dispatch({type : DISPLAY_VOTE})}>Go to vote</button>
+        <div className="rank__top">
+          {
+            this.props.rank && this.props.rank.length > 2 && this.props.rank.slice(0, 3).map((cat, index) => {
+              return <RankCat isTop={true} cat={cat} rank={index + 1}/>
+            })
+          }
+        </div>
+        <div className="rank__bottom__container">
+          <div className="rank__bottom" style={{width: `${100 * (this.props.rank.length - 3)}px`}}>
+            {
+              this.props.rank && this.props.rank.length > 3 && this.props.rank.slice(3).map((cat, index) => {
+                return <RankCat cat={cat} rank={index + 4}/>
+              })
+            }
+          </div>
+        </div>
 
     </div>)
   }

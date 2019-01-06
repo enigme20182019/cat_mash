@@ -15,7 +15,6 @@ BODY {
   justify-content: space-around;
 }
 
-
 .vote_cat__img__container {
   width: 300px;
   height: 300px;
@@ -85,4 +84,39 @@ BODY {
   text-align: center;
   width: 100%;
   color: #576374;
+}
+/* RANK */
+.rank__top {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rank_cat__image {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+}
+
+.rank__bottom__container {
+  width: 100%;
+  margin-top: 150px;
+  overflow-x: scroll;
+}
+
+.rank_cat__podium {
+  width: 200px;
+  background: #F3F5F7;
+}
+
+
+@media (max-width: 1100px) {
+  .footer {
+    display: none;
+  }
+
+  .toggle_page {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+  }
 }
