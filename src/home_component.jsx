@@ -1,7 +1,21 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {DISPLAY_RANK, DISPLAY_VOTE} from "./reducers/app_reducer";
 
-export default class HomeComponent extends Component {
+import Rank from "./pages/rank.jsx";
+import Vote from "./pages/vote.jsx";
+
+class HomeComponent extends Component {
   render() {
-    return <div>Home</div>
+    return (<div>
+      {this.props.display === DISPLAY_VOTE && <Vote/>}
+      {this.props.display === DISPLAY_RANK && <Rank/>}
+    </div>)
   }
 }
+
+const mapStateToProps = ({display}) => {
+  return {display : display}
+}
+
+export default connect(mapStateToProps)(HomeComponent)
