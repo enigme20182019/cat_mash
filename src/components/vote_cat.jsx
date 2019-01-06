@@ -4,13 +4,14 @@ export default class VoteCat extends Component {
 
 
   render() {
-    return (<div>
-        vote cat
+    return (<div className="vote_cat">
       {this.props.cat &&
       <div onClick={() => this.props.vote()}>
-        vote img
-        <img src={this.props.cat.url}/>
-      </div>}
+        <div className="vote_cat__img__container">
+          <div className="vote_cat__img" style={{backgroundImage : `url(${this.props.cat.url})`}}/>
+          <div className="vote_cat__hover">Vote for {this.props.cat.id}</div>
+        </div>
+        </div>}
       </div>
     )
   }

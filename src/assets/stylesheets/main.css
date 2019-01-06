@@ -2,8 +2,87 @@
 * {
   padding: 0;
   margin: 0;
+  border: none;
 }
 
 BODY {
   font-family: sans-serif;
+}
+
+.vote_cat__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+.vote_cat__img__container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 10px solid #303e52;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.vote_cat__img__container:hover .vote_cat__hover {
+  background: #303e52;
+  opacity: .7;
+}
+
+.vote_cat__hover {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top:0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .2s;
+  font-size: 20px;
+  text-align: center;
+  line-height: 300px;
+  color: #F3F5F7;
+}
+
+.vote_cat__img {
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+}
+
+.vote_page__text {
+  font-size: 34px;
+  color: #303e52;
+  text-align: center;
+  margin: 100px;
+}
+
+.imp {
+  color: #718af4;
+}
+
+.toggle_page {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  top: 200px;
+  height: 80px;
+  width: 300px;
+  font-size: 22px;
+  background-color: #323638;
+  color: #F3F5F7;
+}
+
+.toggle_page:hover {
+  background: #F3F5F7;
+  color: #303e52;
+}
+
+.footer {
+  position: absolute;
+  bottom: 4px;
+  text-align: center;
+  width: 100%;
+  color: #576374;
 }

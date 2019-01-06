@@ -27,11 +27,22 @@ class Vote extends Component {
   }
 
   render() {
-    return (<div>
-      <h1>Vote</h1>
-      <VoteCatComponent vote={() => {this.voteLeft()}} cat={this.props.leftCat}/>
-      <VoteCatComponent vote={() => {this.voteRight()}} cat={this.props.rightCat}/>
-      <button onClick={() => this.props.dispatch({type : DISPLAY_RANK})}>Go to rank</button>
+    return (<div className="vote_page">
+      <p className="vote_page__text">
+
+        Welcome to the <span className="imp">cat factory</span><br/>
+        We need you to find the <span className="imp">cutest</span> cat of the web
+        <br/><br/>
+
+        Choose which one <span className="imp">you prefer</span><br/>
+        the war rages on the <span className="imp">cat universe</span>
+
+      </p>
+      <div className="vote_cat__container">
+        <VoteCatComponent vote={() => {this.voteLeft()}} cat={this.props.leftCat}/>
+        <VoteCatComponent vote={() => {this.voteRight()}} cat={this.props.rightCat}/>
+        <button className="toggle_page" onClick={() => this.props.dispatch({type : DISPLAY_RANK})}>Go to rank</button>
+      </div>
     </div>)
   }
 }
