@@ -1,6 +1,7 @@
 export const DISPLAY_VOTE = 'd_vote'
 export const DISPLAY_RANK = 'd_rank'
 export const LOAD_CATS = 'l_cats'
+export const VOTE_CAT = 'v_cat'
 
 
 const initState = {
@@ -21,6 +22,8 @@ export const appReducer = (state = initState, action) => {
     case LOAD_CATS :
       let cats = action.payload
       return {...state, cats: action.payload, leftCat:cats.pop(), rightCat:cats.pop()}
+    case VOTE_CAT:
+      return {...state, leftCat: state.cats.pop(), rightCat : state.cats.pop()}
     default:
       return state
   }
