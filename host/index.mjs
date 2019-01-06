@@ -16,7 +16,7 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
 
   app.get('/cats', (req, res) => {
     let lessVotedCats = cats.sort((catA, catB) => {
-      return (catA.upvote + catB.downvote) < (catB.upvote + catB.downvote)
+      return (catA.upvote + catA.downvote) - (catB.upvote + catB.downvote)
     }).slice(0, 10)
     List.shuffle(lessVotedCats)
     res.json(lessVotedCats)
@@ -24,7 +24,7 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
 
 
   app.get('/rank', (req, res) => {
-    res.json(cats.sort((catA, catB) => catA.elo < catB.elo))
+    res.json(cats.sort((catA, catB) => catB.elo - catA.elo))
   })
 
 
