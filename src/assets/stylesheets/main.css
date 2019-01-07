@@ -45,6 +45,7 @@ BODY {
 }
 
 .vote_cat__img {
+  margin: -40px 0 0 -40px;
   width: 400px;
   height: 400px;
   background-size: cover;

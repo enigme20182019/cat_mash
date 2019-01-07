@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {DISPLAY_RANK, LOAD_CATS} from "../reducers/app_reducer";
+import {DISPLAY_RANK} from "../reducers/app_reducer";
 import {connect} from "react-redux";
-import voteMiddleware from '../midlewares/vote'
+import {pick, vote} from '../midlewares/action'
+
 
 import VoteCatComponent from '../components/vote_cat.jsx'
 
@@ -14,23 +15,21 @@ class Vote extends Component {
 
   async componentDidMount() {
     // only cold load
-    let rawCatsResponse = await fetch(`http://localhost:8001/pick_cat/?except=${this.votes.join(',')}`)
-    let catsResponse = await rawCatsResponse.json()
-    this.props.dispatch({type : LOAD_CATS, payload : catsResponse})
+    pick(this.props.dispatch, this.votes)
   }
 
   voteLeft() {
     let winner = this.props.leftCat
     this.votes.push(winner)
     let loser = this.props.rightCat
-    voteMiddleware(this.props.dispatch, winner, loser, this.votes)
+    vote(this.props.dispatch, winner, loser, this.votes)
   }
 
   voteRight() {
     let winner = this.props.rightCat
     this.votes.push(winner)
     let loser = this.props.leftCat
-    voteMiddleware(this.props.dispatch, winner, loser, this.votes)
+    vote(this.props.dispatch, winner, loser, this.votes)
   }
 
   render() {

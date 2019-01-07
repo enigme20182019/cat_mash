@@ -1,8 +1,16 @@
 import express from 'express'
 import boot from './app/boot.mjs'
 import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
+import yaml from 'js-yaml'
+import fs from 'fs'
+import path from 'path'
+
+
 
 (async () => {
+
+  const config = yaml.safeLoad(fs.readFileSync(path.join('config', 'app.yaml'))).appConfig
+
   const app = express()
   const cats = await boot()
 
@@ -66,9 +74,7 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
     res.json({error : 'empty route'})
   })
 
-  console.log("listen on http://localhost:8001")
-
-  app.listen('8001')
-
+  console.log(`listen on ${config.host.baseUrl}:${config.host.port}`)
+  app.listen(config.host.port)
 })()
 

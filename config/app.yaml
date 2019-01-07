@@ -1,0 +1,7 @@
+appConfig:
+  host:
+    baseUrl: http://localhost #86.247.18.163
+    port: 8001
+  routes:
+    pick_cat: pick_cat
+    vote: vote

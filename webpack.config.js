@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: __dirname + '/src/index.jsx',
+  entry: `${__dirname}/src/index.jsx`,
   output: {
     path: outputDir,
-    publicPath: outputDir,
+    publicPath: '/',
     filename: 'bundle.js',
   },
   plugins: [new HtmlWebpackPlugin({
@@ -18,6 +18,13 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.yaml$/,
+        use:[
+          {loader: 'json-loader'},
+          {loader: 'yaml-loader'}
+        ]
+      },
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
