@@ -22,7 +22,7 @@ export const appReducer = (state = initState, action) => {
       let cats = action.payload
       return {...state, cats : action.payload, leftCat:cats.pop(), rightCat : cats.pop()}
     case VOTE_CAT:
-      return {...state, leftCat: state.cats.pop(), rightCat : state.cats.pop()}
+      return {...state, leftCat: action.payload.pop(), rightCat : action.payload.pop()}
     case LOAD_RANK:
       return {...state, rank : action.payload}
     default:

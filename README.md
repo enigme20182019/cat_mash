@@ -24,9 +24,9 @@ then
 
 ## Host routes
 
-__GET /cats__
-
- get 10 less voted cats shuffled
+__GET /pick_cats__
+ optional parameter except : id list of already voted cat
+ get 2 less voted cats shuffled
 
  
 __POST /vote/:winnerID/:loserId__

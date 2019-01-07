@@ -1,6 +1,5 @@
 import express from 'express'
 import boot from './app/boot.mjs'
-import List from 'list'
 import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
 
 (async () => {
@@ -14,14 +13,27 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
     next()
   })
 
-  app.get('/cats', (req, res) => {
+  app.get('/pick_cat', (req, res) => {
+    let exceptParams = []
+    if(req.query.except) {
+      exceptParams= req.query.except.split(',').map((id) => parseInt(id))
+    }
+
     let lessVotedCats = cats.sort((catA, catB) => {
       return (catA.upvote + catA.downvote) - (catB.upvote + catB.downvote)
-    }).slice(0, 10)
-    List.shuffle(lessVotedCats)
-    res.json(lessVotedCats)
-  })
+    })
 
+    let exceptCats = lessVotedCats.filter((cat) => exceptParams.indexOf(cat.id) === -1)
+    if(exceptCats.length >= 2) {
+      exceptCats = exceptCats.slice(0,2)
+      res.json(exceptCats)
+    } else {
+      /* all cats have been check once */
+      lessVotedCats = lessVotedCats.slice(0,2)
+      res.json(lessVotedCats)
+    }
+
+  })
 
   app.get('/rank', (req, res) => {
     res.json(cats.sort((catA, catB) => catB.elo - catA.elo))
@@ -42,7 +54,7 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
       loser.downvote += 1
       winner.upvote += 1
 
-      res.json([winner, loser])
+      res.json({success : true})
     } else {
       res.status(503)
       res.json({message : 'Winner or loser missing'})
@@ -53,7 +65,6 @@ import Elo, {WIN_STATUS, LOOSE_STATUS} from 'elo'
     res.status(404)
     res.json({error : 'empty route'})
   })
-
 
   console.log("listen on http://localhost:8001")
 

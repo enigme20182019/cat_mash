@@ -7,23 +7,30 @@ import VoteCatComponent from '../components/vote_cat.jsx'
 
 class Vote extends Component {
 
+  constructor() {
+    super()
+    this.votes = []
+  }
+
   async componentDidMount() {
     // only cold load
-    let rawCatsResponse = await fetch('http://localhost:8001/cats/')
+    let rawCatsResponse = await fetch(`http://localhost:8001/pick_cat/?except=${this.votes.join(',')}`)
     let catsResponse = await rawCatsResponse.json()
     this.props.dispatch({type : LOAD_CATS, payload : catsResponse})
   }
 
   voteLeft() {
     let winner = this.props.leftCat
+    this.votes.push(winner)
     let loser = this.props.rightCat
-    voteMiddleware(this.props.dispatch, winner, loser)
+    voteMiddleware(this.props.dispatch, winner, loser, this.votes)
   }
 
   voteRight() {
     let winner = this.props.rightCat
+    this.votes.push(winner)
     let loser = this.props.leftCat
-    voteMiddleware(this.props.dispatch, winner, loser)
+    voteMiddleware(this.props.dispatch, winner, loser, this.votes)
   }
 
   render() {
