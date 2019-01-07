@@ -22,7 +22,7 @@ class Rank extends Component {
           }
         </div>
         <div className="rank__bottom__container">
-          <div className="rank__bottom" style={{width: `${100 * (this.props.rank.length - 3)}px`}}>
+          <div className="rank__bottom" style={{width: `${200 * (this.props.rank.length - 3)}px`}}>
             {
               this.props.rank && this.props.rank.length > 3 && this.props.rank.slice(3).map((cat, index) => {
                 return <RankCat cat={cat} rank={index + 4} key={index}/>
