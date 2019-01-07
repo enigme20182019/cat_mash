@@ -50,6 +50,18 @@ BODY {
   height: 400px;
   background-size: cover;
 }
+.vote_cat__thx {
+  font-size: 22px;
+  width: 320px;
+  text-align: center;
+  transition: opacity .1s;
+  opacity: 0;
+  color: #f0616f;
+}
+
+.vote_cat__thx--active {
+  opacity: 1;
+}
 
 .vote_page__text {
   font-size: 34px;
@@ -109,6 +121,23 @@ BODY {
   background: #F3F5F7;
 }
 
+/* loading */
+.loading {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background: rgba(255, 255, 255, .45);
+}
+
+.loading_cat {
+  width: 200px;
+  height: 200px;
+  margin-left: calc(50vw - 100px);
+  margin-top: calc(50vh - 100px);
+  background-image: url("/assets/images/lg.blue-longcat-spinner.gif");
+  background-size: 200px;
+}
 
 @media (max-width: 1100px) {
   .footer {
