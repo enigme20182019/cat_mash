@@ -15,7 +15,7 @@ export default class RankCat extends Component {
     return (
       <div style={style} >
 
-        <span className="rank_cat__elo">{cat.elo}</span>
+        <span className="rank_cat__elo">{cat.name}</span>
         <div className="rank_cat__image" style={{backgroundImage: `url(${cat.url})`}}/>
         {
           this.props.isTop && (

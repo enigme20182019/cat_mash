@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {DISPLAY_RANK} from "../reducers/app_reducer";
 import {connect} from "react-redux";
-import {pick, vote} from '../midlewares/action'
+import {pick, vote} from '../middlewares/action'
 
 
 import VoteCatComponent from '../components/vote_cat.jsx'
@@ -41,7 +41,7 @@ class Vote extends Component {
         <br/><br/>
 
         Choose which one <span className="imp">you prefer</span><br/>
-        the war rages on the <span className="imp">cat universe</span>
+        the war rages in the <span className="imp">cat universe</span>
 
       </p>
       <div className="vote_cat__container">

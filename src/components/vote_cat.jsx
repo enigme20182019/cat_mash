@@ -6,21 +6,21 @@ class VoteCat extends Component {
 
   constructor() {
     super()
-    this.state = {voted : false, froozen : false}
+    this.state = {voted : false, frozen : false}
   }
 
   selectCat() {
-    if(this.state.froozen) {
+    if(this.state.frozen) {
       return
     }
-    this.setState({voted : true, froozen : true})
+    this.setState({voted : true, frozen : true})
     setTimeout(() => {
       this.setState({voted : false})
       this.props.dispatch({type : START_LOAD})
-    }, 300)
+    }, 800)
     setTimeout(() => {
       this.props.vote()
-      this.setState({...this.state, froozen : false})
+      this.setState({...this.state, frozen : false})
     }, 1000)
     setTimeout(() => {
       this.props.dispatch({type : END_LOAD})
@@ -40,7 +40,7 @@ class VoteCat extends Component {
 
         <div className="vote_cat__img__container">
           <div className="vote_cat__img" style={{backgroundImage : `url(${this.props.cat.url})`}}/>
-          <div className="vote_cat__hover">Vote for {this.props.cat.id}</div>
+          <div className="vote_cat__hover">Vote for {this.props.cat.name}</div>
         </div>
         </div>}
       </div>

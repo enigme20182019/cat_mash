@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {DISPLAY_VOTE} from "../reducers/app_reducer";
-import rankMiddleware from '../midlewares/rank'
+import rankMiddleware from '../middlewares/rank'
 import {connect} from "react-redux";
 import RankCat from "../components/rank_cat.jsx"
 
